@@ -96,6 +96,16 @@
       <Command>IF EXIST ..\bin\Release-windows-x86_64\EmeraldEngine\EmeraldEngine.lib\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\EmeraldEngine\EmeraldEngine.lib ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\EmeraldEngine\EmeraldEngine.lib ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\EntryPoint.h" />
+    <ClInclude Include="src\emeraldengine_pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\EntryPoint.cpp" />
+    <ClCompile Include="src\emeraldengine_pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
