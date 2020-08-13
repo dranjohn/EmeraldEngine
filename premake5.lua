@@ -17,6 +17,8 @@ latestCppDialect = "C++17"
 pchName = "emeraldengine_pch"
 
 
+include (projectName .. "/vendor/GLFW")
+
 
 -- EmeraldEngine main module
 project (projectName)
@@ -41,6 +43,11 @@ project (projectName)
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/include"
+	}
+	
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	postbuildcommands {

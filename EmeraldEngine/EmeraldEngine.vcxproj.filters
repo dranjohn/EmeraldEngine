@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\EmeraldEngine.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="include\core\EntryPoint.h">
       <Filter>include\core</Filter>
     </ClInclude>

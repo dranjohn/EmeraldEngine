@@ -1,1 +1,1 @@
-#include <core/EntryPoint.h>
+#include <EmeraldEngine.h>

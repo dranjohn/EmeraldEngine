@@ -1,0 +1,3 @@
+[submodule "EmeraldEngine/vendor/glfw"]
+	path = EmeraldEngine/vendor/glfw
+	url = https://github.com/glfw/glfw
