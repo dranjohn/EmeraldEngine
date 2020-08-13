@@ -20,11 +20,11 @@ namespace EmeraldEngine {
 // ----------------------------
 #ifdef EE_DEBUG
 
-#define EE_CLIENT_LOG_TRACE(...) EmeraldEngine::InternalCoreLog::getLogger()->trace(__VA_ARGS__);
-#define EE_CLIENT_LOG_INFO(...) EmeraldEngine::InternalCoreLog::getLogger()->info(__VA_ARGS__);
-#define EE_CLIENT_LOG_WARN(...) EmeraldEngine::InternalCoreLog::getLogger()->warn(__VA_ARGS__);
-#define EE_CLIENT_LOG_ERROR(...) EmeraldEngine::InternalCoreLog::getLogger()->error(__VA_ARGS__);
-#define EE_CLIENT_LOG_CRITICAL(...) EmeraldEngine::InternalCoreLog::getLogger()->critical(__VA_ARGS__);
+#define EE_CLIENT_LOG_TRACE(...) EmeraldEngine::ClientLog::getLogger()->trace(__VA_ARGS__);
+#define EE_CLIENT_LOG_INFO(...) EmeraldEngine::ClientLog::getLogger()->info(__VA_ARGS__);
+#define EE_CLIENT_LOG_WARN(...) EmeraldEngine::ClientLog::getLogger()->warn(__VA_ARGS__);
+#define EE_CLIENT_LOG_ERROR(...) EmeraldEngine::ClientLog::getLogger()->error(__VA_ARGS__);
+#define EE_CLIENT_LOG_CRITICAL(...) EmeraldEngine::ClientLog::getLogger()->critical(__VA_ARGS__);
 
 #else
 

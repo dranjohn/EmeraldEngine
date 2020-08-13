@@ -5,6 +5,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+// --- Interface includes ---
+#include "core/Application.h"
+
 //--- Debugging utils ---
 #include "core/debug/InternalLog.h"
 
@@ -39,6 +42,18 @@ int main() {
 	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
+	//get application
+	EmeraldEngine::Application* application = EmeraldEngine::createApplication();
+	application->initialize();
+
+
+	//terminate program
+	application->terminate();
+	delete application;
+
 	glfwTerminate();
+
 	return 0;
 }
+
+extern EmeraldEngine::Application* EmeraldEngine::createApplication();

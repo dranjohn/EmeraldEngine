@@ -24,6 +24,9 @@
     <ClInclude Include="include\EmeraldEngine.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\core\Application.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
     <ClInclude Include="include\core\EntryPoint.h">
       <Filter>include\core</Filter>
     </ClInclude>

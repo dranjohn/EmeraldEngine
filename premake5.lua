@@ -95,7 +95,8 @@ project "Sandbox"
 	}
 
 	includedirs {
-		projectName .. "/include"
+		projectName .. "/include",
+		projectName .. "/vendor/spdlog/include"
 	}
 
 	links {
