@@ -7,11 +7,17 @@
     <Filter Include="include\core">
       <UniqueIdentifier>{A17DD969-8DE0-680E-3666-A1C422A83491}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\debug">
+      <UniqueIdentifier>{F78C90B6-E370-510C-4CD1-4B5F38D43B8E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\core">
       <UniqueIdentifier>{C55F2ECF-B12C-89DA-DA45-7782C671BE68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\debug">
+      <UniqueIdentifier>{1B7AB787-0748-AB8D-F0DB-1BB4DC4887F2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -21,6 +27,12 @@
     <ClInclude Include="include\core\EntryPoint.h">
       <Filter>include\core</Filter>
     </ClInclude>
+    <ClInclude Include="include\core\debug\Log.h">
+      <Filter>include\core\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\debug\InternalLog.h">
+      <Filter>src\core\debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\emeraldengine_pch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -28,6 +40,9 @@
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
       <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\debug\Log.cpp">
+      <Filter>src\core\debug</Filter>
     </ClCompile>
     <ClCompile Include="src\emeraldengine_pch.cpp">
       <Filter>src</Filter>

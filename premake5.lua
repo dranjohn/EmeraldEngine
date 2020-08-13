@@ -42,7 +42,9 @@ project (projectName)
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/include"
+		"%{prj.name}/include",
+		"%{prj.name}/vendor/glfw/include",
+		"%{prj.name}/vendor/spdlog/include"
 	}
 	
 	links {
