@@ -1,5 +1,9 @@
 #pragma once
 
+//--- Standard library ---
+#include <cstdint>
+
+
 namespace EmeraldEngine {
 	class Application {
 	public:
@@ -8,4 +12,14 @@ namespace EmeraldEngine {
 	};
 
 	Application* createApplication();
+
+
+	struct WindowProperties {
+		unsigned int width;
+		unsigned int height;
+
+		char* title;
+	};
+
+	WindowProperties& getPropertyMemory();
 }

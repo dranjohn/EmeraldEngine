@@ -22,15 +22,14 @@ int main() {
 	}
 
 	//create GLFW window
-	const int SCREEN_WIDTH = 640;
-	const int SCREEN_HEIGHT = 360;
+	EmeraldEngine::WindowProperties& windowProperties = EmeraldEngine::getPropertyMemory();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, false);
 
-	GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "EmeraldEngine", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(windowProperties.width, windowProperties.height, windowProperties.title, nullptr, nullptr);
 	glfwMakeContextCurrent(window);
 
 	//load openGL using GLAD
@@ -39,7 +38,7 @@ int main() {
 		return -1;
 	}
 
-	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	glViewport(0, 0, windowProperties.width, windowProperties.height);
 
 
 	//get application
@@ -56,4 +55,6 @@ int main() {
 	return 0;
 }
 
+//--- User-defined application to run on the emerald engine ---
 extern EmeraldEngine::Application* EmeraldEngine::createApplication();
+extern EmeraldEngine::WindowProperties& EmeraldEngine::getPropertyMemory();
