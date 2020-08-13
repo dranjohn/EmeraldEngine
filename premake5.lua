@@ -17,7 +17,8 @@ latestCppDialect = "C++17"
 pchName = "emeraldengine_pch"
 
 
-include (projectName .. "/vendor/GLFW")
+include (projectName .. "/vendor/glfw")
+include (projectName .. "/vendor/glad")
 
 
 -- EmeraldEngine main module
@@ -43,11 +44,13 @@ project (projectName)
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/include",
+		"%{prj.name}/vendor/glad/include",
 		"%{prj.name}/vendor/glfw/include",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 	
 	links {
+		"GLAD",
 		"GLFW",
 		"opengl32.lib"
 	}
