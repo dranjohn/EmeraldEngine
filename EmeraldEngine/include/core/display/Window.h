@@ -6,6 +6,7 @@ namespace EmeraldEngine {
 		Window() {}
 
 	public:
-		virtual void renderQuad() = 0;
+		virtual void renderQuad() const = 0;
+		virtual void setBackgroundColor(float red, float green, float blue) const = 0;
 	};
 }

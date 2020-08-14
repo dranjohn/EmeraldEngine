@@ -17,11 +17,15 @@ namespace EmeraldEngine {
 		GLFWwindow* window;
 		std::shared_ptr<WindowProperties> windowProperties;
 
+		GLuint quadVaoId;
+		GLuint quadVboId;
+
 	public:
 		OpenGLWindow(std::shared_ptr<WindowProperties>& windowProperties);
 		~OpenGLWindow();
 
-		void renderQuad() override;
+		void renderQuad() const override;
+		void setBackgroundColor(float red, float green, float blue) const override;
 
 		void resetTime() override;
 		double getTime() override;

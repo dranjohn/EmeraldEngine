@@ -5,17 +5,17 @@
 #include <memory>
 #include <string>
 
+//--- Interface files ---
+#include "core/display/Window.h"
+
 
 namespace EmeraldEngine {
 	class Application {
 	public:
-		virtual void initialize() = 0;
-		virtual void terminate() = 0;
-
 		virtual void update(double deltaTime) = 0;
 	};
 
-	Application* createApplication();
+	Application* createApplication(const EmeraldEngine::Window& gameWindow);
 
 
 	struct WindowProperties {

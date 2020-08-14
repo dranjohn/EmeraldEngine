@@ -10,23 +10,23 @@ std::shared_ptr<EmeraldEngine::WindowProperties> windowProperties = std::make_sh
 );
 
 class Game : public EmeraldEngine::Application {
-	void initialize() override {
-		
+private:
+	const EmeraldEngine::Window& gameWindow;
+
+public:
+	Game(const EmeraldEngine::Window& gameWindow) : gameWindow(gameWindow) {
+		gameWindow.setBackgroundColor(0.2f, 0.5f, 0.8f);
 	}
-
-	void terminate() override {
-
-	}
-
 
 	void update(double deltaTime) override {
 		EE_CLIENT_LOG_TRACE("Executing game iteration with {:.3f} seconds", deltaTime);
+		gameWindow.renderQuad();
 	}
 };
 
 
-EmeraldEngine::Application* EmeraldEngine::createApplication() {
-	return new Game();
+EmeraldEngine::Application* EmeraldEngine::createApplication(const EmeraldEngine::Window& gameWindow) {
+	return new Game(gameWindow);
 }
 
 std::shared_ptr<EmeraldEngine::WindowProperties> EmeraldEngine::getPropertyMemory() {

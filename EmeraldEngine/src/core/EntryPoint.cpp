@@ -21,13 +21,13 @@ int main() {
 
 
 	//get application
-	EmeraldEngine::Application* application = EmeraldEngine::createApplication();
+	EmeraldEngine::Application* application = EmeraldEngine::createApplication(*window);
 
-	window->resetTime();
-	application->initialize();
 
 	//run main loop
 	double deltaTime;
+	window->resetTime();
+
 	while (windowProperties->continueRunning) {
 		window->preUpdate();
 
@@ -40,14 +40,12 @@ int main() {
 
 
 	//terminate program
-	application->terminate();
 	delete application;
-
 	delete window;
 
 	return 0;
 }
 
 //--- User-defined application to run on the emerald engine ---
-extern EmeraldEngine::Application* EmeraldEngine::createApplication();
+extern EmeraldEngine::Application* EmeraldEngine::createApplication(const EmeraldEngine::Window& gameWindow);
 extern std::shared_ptr<EmeraldEngine::WindowProperties> EmeraldEngine::getPropertyMemory();
