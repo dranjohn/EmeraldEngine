@@ -3,10 +3,11 @@
 #include <EmeraldEngine.h>
 
 
-EmeraldEngine::WindowProperties windowProperties = {
-	640, 360,
-	"Sandbox game"
-};
+std::shared_ptr<EmeraldEngine::WindowProperties> windowProperties = std::make_shared<EmeraldEngine::WindowProperties>(
+	640, 360, //dimension
+	"Sandbox game", //title
+	true //keep running
+);
 
 class Game : public EmeraldEngine::Application {
 	void initialize() override {
@@ -16,6 +17,11 @@ class Game : public EmeraldEngine::Application {
 	void terminate() override {
 
 	}
+
+
+	void update(double deltaTime) override {
+		EE_CLIENT_LOG_TRACE("Executing game iteration with {:.3f} seconds", deltaTime);
+	}
 };
 
 
@@ -23,6 +29,6 @@ EmeraldEngine::Application* EmeraldEngine::createApplication() {
 	return new Game();
 }
 
-EmeraldEngine::WindowProperties& EmeraldEngine::getPropertyMemory() {
+std::shared_ptr<EmeraldEngine::WindowProperties> EmeraldEngine::getPropertyMemory() {
 	return windowProperties;
 }

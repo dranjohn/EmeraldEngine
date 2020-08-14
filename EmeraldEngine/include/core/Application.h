@@ -2,6 +2,8 @@
 
 //--- Standard library ---
 #include <cstdint>
+#include <memory>
+#include <string>
 
 
 namespace EmeraldEngine {
@@ -9,6 +11,8 @@ namespace EmeraldEngine {
 	public:
 		virtual void initialize() = 0;
 		virtual void terminate() = 0;
+
+		virtual void update(double deltaTime) = 0;
 	};
 
 	Application* createApplication();
@@ -18,8 +22,17 @@ namespace EmeraldEngine {
 		unsigned int width;
 		unsigned int height;
 
-		char* title;
+		std::string title;
+
+		bool continueRunning;
+
+		WindowProperties(unsigned int width, unsigned int height, std::string title, bool continueRunning) :
+			width(width),
+			height(height),
+			title(title),
+			continueRunning(continueRunning)
+		{}
 	};
 
-	WindowProperties& getPropertyMemory();
+	std::shared_ptr<WindowProperties> getPropertyMemory();
 }

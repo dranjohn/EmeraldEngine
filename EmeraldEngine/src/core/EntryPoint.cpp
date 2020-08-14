@@ -1,12 +1,12 @@
 #include "emeraldengine_pch.h"
 #include "core/EntryPoint.h"
 
-//--- External vendor libraries ---
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-// --- Interface includes ---
+//--- Interface files ---
 #include "core/Application.h"
+
+//--- Internal files ---
+#include "core/display/InternalWindow.h"
+#include "platform/openGL/display/OpenGLWindow.h"
 
 //--- Debugging utils ---
 #include "core/debug/InternalLog.h"
@@ -15,46 +15,39 @@
 int main() {
 	EE_CORE_LOG_INFO("Starting EmeraldEngine");
 
-	//initialize GLFW
-	if (!glfwInit()) {
-		EE_CORE_LOG_CRITICAL("Failed to initialize GLFW");
-		return -1;
-	}
-
-	//create GLFW window
-	EmeraldEngine::WindowProperties& windowProperties = EmeraldEngine::getPropertyMemory();
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, false);
-
-	GLFWwindow* window = glfwCreateWindow(windowProperties.width, windowProperties.height, windowProperties.title, nullptr, nullptr);
-	glfwMakeContextCurrent(window);
-
-	//load openGL using GLAD
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		EE_CORE_LOG_CRITICAL("Failed to load openGL with GLAD");
-		return -1;
-	}
-
-	glViewport(0, 0, windowProperties.width, windowProperties.height);
+	//create openGL window
+	std::shared_ptr<EmeraldEngine::WindowProperties> windowProperties = EmeraldEngine::getPropertyMemory();
+	EmeraldEngine::InternalWindow* window = new EmeraldEngine::OpenGLWindow(windowProperties);
 
 
 	//get application
 	EmeraldEngine::Application* application = EmeraldEngine::createApplication();
+
+	window->resetTime();
 	application->initialize();
+
+	//run main loop
+	double deltaTime;
+	while (windowProperties->continueRunning) {
+		window->preUpdate();
+
+		deltaTime = window->getTime();
+		window->resetTime();
+		application->update(deltaTime);
+
+		window->postUpdate();
+	}
 
 
 	//terminate program
 	application->terminate();
 	delete application;
 
-	glfwTerminate();
+	delete window;
 
 	return 0;
 }
 
 //--- User-defined application to run on the emerald engine ---
 extern EmeraldEngine::Application* EmeraldEngine::createApplication();
-extern EmeraldEngine::WindowProperties& EmeraldEngine::getPropertyMemory();
+extern std::shared_ptr<EmeraldEngine::WindowProperties> EmeraldEngine::getPropertyMemory();

@@ -103,12 +103,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\core\display\Window.h" />
     <ClInclude Include="include\EmeraldEngine.h" />
     <ClInclude Include="include\core\Application.h" />
     <ClInclude Include="include\core\EntryPoint.h" />
     <ClInclude Include="include\core\debug\Log.h" />
     <ClInclude Include="src\core\debug\InternalLog.h" />
+    <ClInclude Include="src\core\display\InternalWindow.h" />
     <ClInclude Include="src\emeraldengine_pch.h" />
+    <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp" />
@@ -116,6 +119,7 @@
     <ClCompile Include="src\emeraldengine_pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\glad\GLAD.vcxproj">

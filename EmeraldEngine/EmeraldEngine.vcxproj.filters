@@ -39,6 +39,9 @@
     <ClInclude Include="src\emeraldengine_pch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="include\core\display\Window.h" />
+    <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
+    <ClInclude Include="src\core\display\InternalWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
@@ -50,5 +53,6 @@
     <ClCompile Include="src\emeraldengine_pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp" />
   </ItemGroup>
 </Project>
