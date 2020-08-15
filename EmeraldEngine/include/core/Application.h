@@ -16,23 +16,4 @@ namespace EmeraldEngine {
 	};
 
 	Application* createApplication(const EmeraldEngine::Window& gameWindow);
-
-
-	struct WindowProperties {
-		unsigned int width;
-		unsigned int height;
-
-		std::string title;
-
-		bool continueRunning;
-
-		WindowProperties(unsigned int width, unsigned int height, std::string title, bool continueRunning) :
-			width(width),
-			height(height),
-			title(title),
-			continueRunning(continueRunning)
-		{}
-	};
-
-	std::shared_ptr<WindowProperties> getPropertyMemory();
 }

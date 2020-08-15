@@ -42,6 +42,7 @@
     <ClInclude Include="include\core\display\Window.h" />
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
     <ClInclude Include="src\core\display\InternalWindow.h" />
+    <ClInclude Include="include\platform\Platform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">

@@ -13,6 +13,8 @@ namespace EmeraldEngine {
 		-0.5f, 0.5f
 	};
 
+	void frambufferSizeCallback(GLFWwindow* window, int width, int height);
+
 
 	OpenGLWindow::OpenGLWindow(std::shared_ptr<WindowProperties>& windowProperties) : windowProperties(windowProperties) {
 		//initialize GLFW
@@ -24,7 +26,7 @@ namespace EmeraldEngine {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, false);
+		glfwWindowHint(GLFW_RESIZABLE, windowProperties->resizable);
 
 		window = glfwCreateWindow(windowProperties->width, windowProperties->height, (windowProperties->title).c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
@@ -36,6 +38,7 @@ namespace EmeraldEngine {
 		}
 
 		glViewport(0, 0, windowProperties->width, windowProperties->height);
+		glfwSetFramebufferSizeCallback(window, frambufferSizeCallback);
 
 
 		//load Quad
@@ -90,5 +93,10 @@ namespace EmeraldEngine {
 	void OpenGLWindow::postUpdate() {
 		glfwSwapBuffers(window);
 		windowProperties->continueRunning &= !glfwWindowShouldClose(window);
+	}
+
+
+	void frambufferSizeCallback(GLFWwindow* window, int width, int height) {
+		glViewport(0, 0, width, height);
 	}
 }

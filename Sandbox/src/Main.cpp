@@ -6,6 +6,7 @@
 std::shared_ptr<EmeraldEngine::WindowProperties> windowProperties = std::make_shared<EmeraldEngine::WindowProperties>(
 	640, 360, //dimension
 	"Sandbox game", //title
+	true, //resizable
 	true //keep running
 );
 
@@ -31,4 +32,8 @@ EmeraldEngine::Application* EmeraldEngine::createApplication(const EmeraldEngine
 
 std::shared_ptr<EmeraldEngine::WindowProperties> EmeraldEngine::getPropertyMemory() {
 	return windowProperties;
+}
+
+EmeraldEngine::Platform EmeraldEngine::getPlatform() {
+	return EmeraldEngine::Platform::defaultPlatform;
 }
