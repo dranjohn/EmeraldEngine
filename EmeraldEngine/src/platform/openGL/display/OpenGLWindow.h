@@ -28,9 +28,13 @@ namespace EmeraldEngine {
 		void setBackgroundColor(float red, float green, float blue) const override;
 
 		void resetTime() override;
-		double getTime() override;
+		double getTime() const override;
 
 		void preUpdate() override;
 		void postUpdate() override;
+
+		bool isKeyPressed(Key keyCode) const override;
+		bool isMouseButtonPressed(MouseButton mouseButtonCode) const override;
+		MousePosition getMousePosition() const override;
 	};
 }

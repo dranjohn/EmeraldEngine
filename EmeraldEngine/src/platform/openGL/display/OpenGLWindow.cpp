@@ -80,7 +80,7 @@ namespace EmeraldEngine {
 		glfwSetTime(0.0);
 	}
 
-	double OpenGLWindow::getTime() {
+	double OpenGLWindow::getTime() const {
 		return glfwGetTime();
 	}
 
@@ -93,6 +93,22 @@ namespace EmeraldEngine {
 	void OpenGLWindow::postUpdate() {
 		glfwSwapBuffers(window);
 		windowProperties->continueRunning &= !glfwWindowShouldClose(window);
+	}
+
+
+	bool OpenGLWindow::isKeyPressed(Key keyCode) const {
+		return glfwGetKey(window, keyCode) == GLFW_PRESS;
+	}
+
+	bool OpenGLWindow::isMouseButtonPressed(MouseButton mouseButtonCode) const {
+		return glfwGetMouseButton(window, mouseButtonCode) == GLFW_PRESS;
+	}
+
+	MousePosition OpenGLWindow::getMousePosition() const {
+		MousePosition position;
+		glfwGetCursorPos(window, &position.x, &position.y);
+
+		return position;
 	}
 
 

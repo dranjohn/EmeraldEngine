@@ -103,7 +103,10 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\CodeCanvas\CodeCanvas\src\core\input\KeyCode.h" />
     <ClInclude Include="include\core\display\Window.h" />
+    <ClInclude Include="include\core\input\KeyCode.h" />
+    <ClInclude Include="include\core\input\MousePosition.h" />
     <ClInclude Include="include\EmeraldEngine.h" />
     <ClInclude Include="include\core\Application.h" />
     <ClInclude Include="include\core\EntryPoint.h" />

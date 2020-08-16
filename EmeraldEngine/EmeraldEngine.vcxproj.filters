@@ -43,6 +43,9 @@
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
     <ClInclude Include="src\core\display\InternalWindow.h" />
     <ClInclude Include="include\platform\Platform.h" />
+    <ClInclude Include="..\..\CodeCanvas\CodeCanvas\src\core\input\KeyCode.h" />
+    <ClInclude Include="include\core\input\KeyCode.h" />
+    <ClInclude Include="include\core\input\MousePosition.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">

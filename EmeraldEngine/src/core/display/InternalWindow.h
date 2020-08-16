@@ -11,7 +11,7 @@ namespace EmeraldEngine {
 
 	public:
 		virtual void resetTime() = 0;
-		virtual double getTime() = 0;
+		virtual double getTime() const = 0;
 
 		virtual void preUpdate() = 0;
 		virtual void postUpdate() = 0;
