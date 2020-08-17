@@ -5,7 +5,6 @@
 
 
 namespace EmeraldEngine {
-	struct MousePosition { double x; double y; };
-	struct MouseClick { MousePosition position; MouseButton button; KeyAction action; };
-	struct KeyStateModified { Key key; KeyAction action; };
+	struct CursorPosition { double x; double y; };
+	struct MouseClick { MouseButton button; KeyAction action; };
 }

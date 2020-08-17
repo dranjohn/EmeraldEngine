@@ -1,6 +1,10 @@
 #include "emeraldengine_pch.h"
 #include "OpenGLWindow.h"
 
+//--- Interface files ---
+#include "core/input/InputData.h"
+#include "core/input/KeyCode.h"
+
 //--- Debugging utils ---
 #include "core/debug/InternalLog.h"
 
@@ -13,7 +17,20 @@ namespace EmeraldEngine {
 		-0.5f, 0.5f
 	};
 
+
 	void frambufferSizeCallback(GLFWwindow* window, int width, int height);
+
+
+	void windowResizeEvent(GLFWwindow* window, int width, int height);
+
+	void windowIconifyEvent(GLFWwindow* window, int iconified);
+	void windowMaximizeEvent(GLFWwindow* window, int maximized);
+	void windowFocusEvent(GLFWwindow* window, int focused);
+
+	void windowKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+	void windowCursorPositionCallback(GLFWwindow* window, double xPos, double yPos);
+	void windowMouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
 
 	OpenGLWindow::OpenGLWindow(const WindowProperties& initialWindowProperties) :
@@ -30,7 +47,7 @@ namespace EmeraldEngine {
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_RESIZABLE, initialWindowProperties.resizable);
 
-		window = glfwCreateWindow(initialWindowProperties.width, initialWindowProperties.height, initialWindowProperties.title.c_str(), nullptr, nullptr);
+		window = glfwCreateWindow(initialWindowProperties.dimensions.width, initialWindowProperties.dimensions.height, initialWindowProperties.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
 
 		//load openGL using GLAD
@@ -39,8 +56,22 @@ namespace EmeraldEngine {
 			//TODO: throw exception
 		}
 
-		glViewport(0, 0, initialWindowProperties.width, initialWindowProperties.height);
+		glViewport(0, 0, initialWindowProperties.dimensions.width, initialWindowProperties.dimensions.height);
 		glfwSetFramebufferSizeCallback(window, frambufferSizeCallback);
+
+		glfwSetWindowUserPointer(window, &windowData);
+
+		//add event callbacks
+		glfwSetWindowSizeCallback(window, windowResizeEvent);
+
+		glfwSetWindowIconifyCallback(window, windowIconifyEvent);
+		glfwSetWindowMaximizeCallback(window, windowMaximizeEvent);
+		glfwSetWindowFocusCallback(window, windowFocusEvent);
+
+		glfwSetKeyCallback(window, windowKeyCallback);
+
+		glfwSetCursorPosCallback(window, windowCursorPositionCallback);
+		glfwSetMouseButtonCallback(window, windowMouseButtonCallback);
 
 
 		//load Quad
@@ -110,15 +141,67 @@ namespace EmeraldEngine {
 		return glfwGetMouseButton(window, mouseButtonCode) == GLFW_PRESS;
 	}
 
-	MousePosition OpenGLWindow::getMousePosition() const {
-		MousePosition position;
+	CursorPosition OpenGLWindow::getCursorPosition() const {
+		CursorPosition position;
 		glfwGetCursorPos(window, &position.x, &position.y);
 
 		return position;
 	}
 
 
+
+	inline WindowData* getWindowData(GLFWwindow* window) {
+		return (WindowData*)glfwGetWindowUserPointer(window);
+	}
+
+
 	void frambufferSizeCallback(GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
+	}
+
+
+	void windowResizeEvent(GLFWwindow* window, int width, int height) {
+		WindowData* windowData = getWindowData(window);
+
+		windowData->windowProperties.dimensions = { (unsigned int)width, (unsigned int)height };
+		std::invoke(windowData->windowEventCallbacks.resizeCallback, windowData->windowProperties.dimensions);
+	}
+
+
+	void windowIconifyEvent(GLFWwindow* window, int iconified) {
+		WindowData* windowData = getWindowData(window);
+		std::invoke(windowData->windowEventCallbacks.iconifyCallback, iconified == GL_TRUE);
+
+	}
+
+	void windowMaximizeEvent(GLFWwindow* window, int maximized) {
+		WindowData* windowData = getWindowData(window);
+		std::invoke(windowData->windowEventCallbacks.maximizeCallback, maximized == GL_TRUE);
+	}
+
+	void windowFocusEvent(GLFWwindow* window, int focused) {
+		WindowData* windowData = getWindowData(window);
+		std::invoke(windowData->windowEventCallbacks.focusCallback, focused == GL_TRUE);
+	}
+
+
+	void windowKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+		WindowData* windowData = getWindowData(window);
+		std::invoke(windowData->windowEventCallbacks.keyCallback, (Key)key, (KeyAction)action);
+	}
+
+
+	void windowCursorPositionCallback(GLFWwindow* window, double xPos, double yPos) {
+		WindowData* windowData = getWindowData(window);
+		std::invoke(windowData->windowEventCallbacks.cursorPositionCallback, CursorPosition({ xPos, yPos }));
+	}
+
+	void windowMouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+		WindowData* windowData = getWindowData(window);
+
+		CursorPosition cursorPos;
+		glfwGetCursorPos(window, &cursorPos.x, &cursorPos.y);
+
+		std::invoke(windowData->windowEventCallbacks.mouseButtonCallback, MouseClick({ (MouseButton)button, (KeyAction)action }), cursorPos);
 	}
 }

@@ -17,7 +17,7 @@ namespace EmeraldEngine {
 
 		virtual bool isKeyPressed(Key keyCode) const = 0;
 		virtual bool isMouseButtonPressed(MouseButton mouseButtonCode) const = 0;
-		virtual MousePosition getMousePosition() const = 0;
+		virtual CursorPosition getCursorPosition() const = 0;
 
 		virtual WindowProperties getWindowProperties() const = 0;
 		virtual WindowEventCallbacks& getEventCallbacks() = 0;

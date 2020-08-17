@@ -7,6 +7,7 @@
 
 //--´- Interface files ---
 #include "core/input/InputData.h"
+#include "core/input/KeyCode.h"
 
 
 namespace EmeraldEngine {
@@ -16,9 +17,7 @@ namespace EmeraldEngine {
 
 
 	struct WindowProperties {
-		unsigned int width;
-		unsigned int height;
-
+		WindowDimensions2D dimensions;
 		std::string title;
 
 		bool resizable;
@@ -28,7 +27,16 @@ namespace EmeraldEngine {
 
 
 	struct WindowEventCallbacks {
-		std::function<void()> resizeCallback = []() {};
+		std::function<void(const WindowDimensions2D&)> resizeCallback = [](const WindowDimensions2D&) {};
+
+		std::function<void(bool)> iconifyCallback = [](bool) {};
+		std::function<void(bool)> maximizeCallback = [](bool) {};
+		std::function<void(bool)> focusCallback = [](bool) {};
+
+		std::function<void(Key, KeyAction)> keyCallback = [](Key, KeyAction) {};
+
+		std::function<void(CursorPosition)> cursorPositionCallback = [](CursorPosition) {};
+		std::function<void(MouseClick, CursorPosition)> mouseButtonCallback = [](MouseClick, CursorPosition) {};
 	};
 
 

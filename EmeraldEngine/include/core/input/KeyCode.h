@@ -13,7 +13,7 @@ namespace EmeraldEngine {
 
 		//--- Default keys ---
 		space = 32,
-		apostrophe = 39,  /* ' */
+		apostrophe = 39, /* ' */
 		comma = 44, /* , */
 		minus = 45, /* - */
 		period = 46, /* . */

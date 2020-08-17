@@ -12,7 +12,7 @@ public:
 	Game(EmeraldEngine::NonAssignable<EmeraldEngine::Window>& gameWindow) : gameWindow(gameWindow) {
 		gameWindow->setBackgroundColor(0.2f, 0.5f, 0.8f);
 
-		gameWindow->getEventCallbacks().resizeCallback = []() {
+		gameWindow->getEventCallbacks().resizeCallback = [](const EmeraldEngine::WindowDimensions2D&) {
 			EE_CLIENT_LOG_INFO("Window resize");
 		};
 	}
@@ -47,7 +47,7 @@ EmeraldEngine::Application* EmeraldEngine::createApplication(EmeraldEngine::NonA
 
 EmeraldEngine::WindowProperties EmeraldEngine::getInitialWindowProperties() {
 	return {
-		640, 360, //dimension
+		{ 640, 360 }, //dimensions
 		std::string("Sandbox game"), //title
 		true //resizable
 	};

@@ -36,6 +36,6 @@ namespace EmeraldEngine {
 
 		bool isKeyPressed(Key keyCode) const override;
 		bool isMouseButtonPressed(MouseButton mouseButtonCode) const override;
-		MousePosition getMousePosition() const override;
+		CursorPosition getCursorPosition() const override;
 	};
 }
