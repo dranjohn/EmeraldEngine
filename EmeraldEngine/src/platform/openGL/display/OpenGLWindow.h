@@ -15,13 +15,12 @@ namespace EmeraldEngine {
 	class OpenGLWindow : public InternalWindow {
 	private:
 		GLFWwindow* window;
-		std::shared_ptr<WindowProperties> windowProperties;
 
 		GLuint quadVaoId;
 		GLuint quadVboId;
 
 	public:
-		OpenGLWindow(std::shared_ptr<WindowProperties>& windowProperties);
+		OpenGLWindow(const WindowProperties& initialWindowProperties);
 		~OpenGLWindow();
 
 		void renderQuad() const override;
@@ -32,6 +31,8 @@ namespace EmeraldEngine {
 
 		void preUpdate() override;
 		void postUpdate() override;
+
+		bool continueRunning() override;
 
 		bool isKeyPressed(Key keyCode) const override;
 		bool isMouseButtonPressed(MouseButton mouseButtonCode) const override;

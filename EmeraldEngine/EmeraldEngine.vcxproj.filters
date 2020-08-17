@@ -10,6 +10,15 @@
     <Filter Include="include\core\debug">
       <UniqueIdentifier>{F78C90B6-E370-510C-4CD1-4B5F38D43B8E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\display">
+      <UniqueIdentifier>{264E6DA7-12DD-F670-BBFB-0A6CA7690717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core\input">
+      <UniqueIdentifier>{8032F0B6-6C16-B10C-D576-AB5FC1799B8E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\platform">
+      <UniqueIdentifier>{1D12BC81-090B-DBD3-323D-C0581E95BADF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
@@ -18,6 +27,18 @@
     </Filter>
     <Filter Include="src\core\debug">
       <UniqueIdentifier>{1B7AB787-0748-AB8D-F0DB-1BB4DC4887F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\display">
+      <UniqueIdentifier>{4A14045E-360D-23B0-5F3F-08354B9702BC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform">
+      <UniqueIdentifier>{41663D6D-2DC9-CC11-D64E-05C8C2909894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform\openGL">
+      <UniqueIdentifier>{757027EB-E1D1-04F9-6A3F-4BABD69F3BB8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform\openGL\display">
+      <UniqueIdentifier>{FAD49A3F-66E2-C825-EFC8-C4105BD594DC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,19 +54,34 @@
     <ClInclude Include="include\core\debug\Log.h">
       <Filter>include\core\debug</Filter>
     </ClInclude>
+    <ClInclude Include="include\core\display\Window.h">
+      <Filter>include\core\display</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\display\WindowProperties.h">
+      <Filter>include\core\display</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\input\InputData.h">
+      <Filter>include\core\input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\input\KeyCode.h">
+      <Filter>include\core\input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\platform\Platform.h">
+      <Filter>include\platform</Filter>
+    </ClInclude>
     <ClInclude Include="src\core\debug\InternalLog.h">
       <Filter>src\core\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\display\InternalWindow.h">
+      <Filter>src\core\display</Filter>
     </ClInclude>
     <ClInclude Include="src\emeraldengine_pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="include\core\display\Window.h" />
-    <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
-    <ClInclude Include="src\core\display\InternalWindow.h" />
-    <ClInclude Include="include\platform\Platform.h" />
-    <ClInclude Include="..\..\CodeCanvas\CodeCanvas\src\core\input\KeyCode.h" />
-    <ClInclude Include="include\core\input\KeyCode.h" />
-    <ClInclude Include="include\core\input\MousePosition.h" />
+    <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h">
+      <Filter>src\platform\openGL\display</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\utility\NonAssignable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
@@ -57,6 +93,9 @@
     <ClCompile Include="src\emeraldengine_pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp" />
+    <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp">
+      <Filter>src\platform\openGL\display</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\display\InternalWindow.cpp" />
   </ItemGroup>
 </Project>

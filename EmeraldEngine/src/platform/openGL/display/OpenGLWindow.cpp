@@ -16,7 +16,9 @@ namespace EmeraldEngine {
 	void frambufferSizeCallback(GLFWwindow* window, int width, int height);
 
 
-	OpenGLWindow::OpenGLWindow(std::shared_ptr<WindowProperties>& windowProperties) : windowProperties(windowProperties) {
+	OpenGLWindow::OpenGLWindow(const WindowProperties& initialWindowProperties) :
+		InternalWindow(initialWindowProperties)
+	{
 		//initialize GLFW
 		if (!glfwInit()) {
 			EE_CORE_LOG_CRITICAL("Failed to initialize GLFW");
@@ -26,9 +28,9 @@ namespace EmeraldEngine {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, windowProperties->resizable);
+		glfwWindowHint(GLFW_RESIZABLE, initialWindowProperties.resizable);
 
-		window = glfwCreateWindow(windowProperties->width, windowProperties->height, (windowProperties->title).c_str(), nullptr, nullptr);
+		window = glfwCreateWindow(initialWindowProperties.width, initialWindowProperties.height, initialWindowProperties.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
 
 		//load openGL using GLAD
@@ -37,7 +39,7 @@ namespace EmeraldEngine {
 			//TODO: throw exception
 		}
 
-		glViewport(0, 0, windowProperties->width, windowProperties->height);
+		glViewport(0, 0, initialWindowProperties.width, initialWindowProperties.height);
 		glfwSetFramebufferSizeCallback(window, frambufferSizeCallback);
 
 
@@ -92,7 +94,11 @@ namespace EmeraldEngine {
 
 	void OpenGLWindow::postUpdate() {
 		glfwSwapBuffers(window);
-		windowProperties->continueRunning &= !glfwWindowShouldClose(window);
+	}
+
+
+	bool OpenGLWindow::continueRunning() {
+		return !glfwWindowShouldClose(window);
 	}
 
 

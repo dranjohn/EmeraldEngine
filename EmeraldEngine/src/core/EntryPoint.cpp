@@ -5,6 +5,7 @@
 #include "core/Application.h"
 #include "core/display/Window.h"
 #include "platform/Platform.h"
+#include "core/utility/NonAssignable.h"
 
 //--- Internal files ---
 #include "core/display/InternalWindow.h"
@@ -21,7 +22,7 @@ int main() {
 	EmeraldEngine::Platform platform = EmeraldEngine::getPlatform();
 
 	//create openGL window
-	std::shared_ptr<EmeraldEngine::WindowProperties> windowProperties = EmeraldEngine::getPropertyMemory();
+	EmeraldEngine::WindowProperties windowProperties = EmeraldEngine::getInitialWindowProperties();
 	EmeraldEngine::InternalWindow* window;
 
 	switch (platform) {
@@ -38,14 +39,14 @@ int main() {
 
 
 	//get application
-	EmeraldEngine::Application* application = EmeraldEngine::createApplication(*window);
+	EmeraldEngine::Application* application = EmeraldEngine::createApplication(EmeraldEngine::NonAssignable<EmeraldEngine::Window>(window));
 
 
 	//run main loop
 	double deltaTime;
 	window->resetTime();
 
-	while (windowProperties->continueRunning) {
+	while (window->continueRunning()) {
 		window->preUpdate();
 
 		deltaTime = window->getTime();
@@ -64,6 +65,6 @@ int main() {
 }
 
 //--- User-defined application to run on the emerald engine ---
-extern EmeraldEngine::Application* EmeraldEngine::createApplication(const EmeraldEngine::Window& gameWindow);
-extern std::shared_ptr<EmeraldEngine::WindowProperties> EmeraldEngine::getPropertyMemory();
+extern EmeraldEngine::Application* EmeraldEngine::createApplication(EmeraldEngine::NonAssignable<EmeraldEngine::Window> gameWindow);
+extern EmeraldEngine::WindowProperties EmeraldEngine::getInitialWindowProperties();
 extern EmeraldEngine::Platform EmeraldEngine::getPlatform();
