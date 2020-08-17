@@ -21,5 +21,11 @@ namespace EmeraldEngine {
 
 		virtual WindowProperties getWindowProperties() const = 0;
 		virtual WindowEventCallbacks& getEventCallbacks() = 0;
+
+
+		virtual void resize(unsigned int width, unsigned int height) = 0;
+		virtual void setTitle(std::string title) = 0;
+
+		virtual void close() = 0;
 	};
 }

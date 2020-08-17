@@ -37,5 +37,11 @@ namespace EmeraldEngine {
 		bool isKeyPressed(Key keyCode) const override;
 		bool isMouseButtonPressed(MouseButton mouseButtonCode) const override;
 		CursorPosition getCursorPosition() const override;
+
+
+		void resize(unsigned int width, unsigned int height) override;
+		void setTitle(std::string title) override;
+
+		void close() override;
 	};
 }

@@ -149,6 +149,20 @@ namespace EmeraldEngine {
 	}
 
 
+	void OpenGLWindow::resize(unsigned int width, unsigned int height) {
+		glfwSetWindowSize(window, width, height);
+	}
+
+	void OpenGLWindow::setTitle(std::string title) {
+		glfwSetWindowTitle(window, title.c_str());
+	}
+
+
+	void OpenGLWindow::close() {
+		glfwSetWindowShouldClose(window, true);
+	}
+
+
 
 	inline WindowData* getWindowData(GLFWwindow* window) {
 		return (WindowData*)glfwGetWindowUserPointer(window);

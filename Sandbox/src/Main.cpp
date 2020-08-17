@@ -6,7 +6,6 @@ private:
 	EmeraldEngine::NonAssignable<EmeraldEngine::Window> gameWindow;
 
 	bool showQuad = true;
-	bool showSwap = false;
 
 public:
 	Game(EmeraldEngine::NonAssignable<EmeraldEngine::Window>& gameWindow) : gameWindow(gameWindow) {
@@ -15,24 +14,30 @@ public:
 		gameWindow->getEventCallbacks().resizeCallback = [](const EmeraldEngine::WindowDimensions2D&) {
 			EE_CLIENT_LOG_INFO("Window resize");
 		};
+		gameWindow->getEventCallbacks().keyCallback = [&](EmeraldEngine::Key key, EmeraldEngine::KeyAction keyAction) {
+			if (keyAction != EmeraldEngine::KeyAction::press) {
+				return;
+			}
+
+			if (key == EmeraldEngine::Key::R) {
+				gameWindow->resize(640, 360);
+				return;
+			}
+
+			if (key == EmeraldEngine::Key::T) {
+				showQuad = !showQuad;
+				return;
+			}
+
+			if (key == EmeraldEngine::Key::escape) {
+				gameWindow->close();
+				return;
+			}
+		};
 	}
 
 	void update(double deltaTime) override {
 		//EE_CLIENT_LOG_TRACE("Executing game iteration with {:.3f} seconds", deltaTime);
-
-		if (gameWindow->isKeyPressed(EmeraldEngine::Key::escape)) {
-			return;
-		}
-		
-		if (gameWindow->isKeyPressed(EmeraldEngine::Key::T)) {
-			if (!showSwap) {
-				showQuad = !showQuad;
-				showSwap = true;
-			}
-		}
-		else {
-			showSwap = false;
-		}
 
 		if (showQuad) {
 			gameWindow->renderQuad();
