@@ -13,8 +13,14 @@
     <Filter Include="include\core\display">
       <UniqueIdentifier>{264E6DA7-12DD-F670-BBFB-0A6CA7690717}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\display\shader">
+      <UniqueIdentifier>{2C6B32C1-9878-60A7-215F-5C928D6B2C5E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\core\input">
       <UniqueIdentifier>{8032F0B6-6C16-B10C-D576-AB5FC1799B8E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core\utility">
+      <UniqueIdentifier>{04E5FCDC-F073-86A6-9992-9AA18500974C}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\platform">
       <UniqueIdentifier>{1D12BC81-090B-DBD3-323D-C0581E95BADF}</UniqueIdentifier>
@@ -40,6 +46,9 @@
     <Filter Include="src\platform\openGL\display">
       <UniqueIdentifier>{FAD49A3F-66E2-C825-EFC8-C4105BD594DC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\platform\openGL\display\shader">
+      <UniqueIdentifier>{807BB1E0-6CB7-B44A-D5C9-CC41C1245D65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EmeraldEngine.h">
@@ -60,11 +69,17 @@
     <ClInclude Include="include\core\display\WindowProperties.h">
       <Filter>include\core\display</Filter>
     </ClInclude>
+    <ClInclude Include="include\core\display\shader\Shader.h">
+      <Filter>include\core\display\shader</Filter>
+    </ClInclude>
     <ClInclude Include="include\core\input\InputData.h">
       <Filter>include\core\input</Filter>
     </ClInclude>
     <ClInclude Include="include\core\input\KeyCode.h">
       <Filter>include\core\input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\utility\NonAssignable.h">
+      <Filter>include\core\utility</Filter>
     </ClInclude>
     <ClInclude Include="include\platform\Platform.h">
       <Filter>include\platform</Filter>
@@ -81,9 +96,9 @@
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h">
       <Filter>src\platform\openGL\display</Filter>
     </ClInclude>
-    <ClInclude Include="include\core\utility\NonAssignable.h" />
-    <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h" />
-    <ClInclude Include="include\core\display\shader\Shader.h" />
+    <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h">
+      <Filter>src\platform\openGL\display\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
@@ -92,13 +107,17 @@
     <ClCompile Include="src\core\debug\Log.cpp">
       <Filter>src\core\debug</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\display\InternalWindow.cpp">
+      <Filter>src\core\display</Filter>
+    </ClCompile>
     <ClCompile Include="src\emeraldengine_pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp">
       <Filter>src\platform\openGL\display</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\display\InternalWindow.cpp" />
-    <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp" />
+    <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp">
+      <Filter>src\platform\openGL\display\shader</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

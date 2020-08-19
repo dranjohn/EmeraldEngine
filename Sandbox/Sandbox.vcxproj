@@ -98,12 +98,6 @@
       <Project>{55E9209D-C1A9-9CD3-8AE4-E550F663E1AF}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="res\shader\fade\fragmentShader.glsl" />
-    <None Include="res\shader\fade\vertexShader.glsl" />
-    <None Include="res\shader\plain\fragmentShader.glsl" />
-    <None Include="res\shader\plain\vertexShader.glsl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

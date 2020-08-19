@@ -17,8 +17,62 @@ latestCppDialect = "C++17"
 pchName = "emeraldengine_pch"
 
 
-include (projectName .. "/vendor/glfw")
+-- GLAD
 include (projectName .. "/vendor/glad")
+
+
+--GLFW
+glfwLocation = "EmeraldEngine/vendor/glfw"
+
+project "GLFW"
+	location (glfwLocation)
+	kind "StaticLib"
+	
+	language "C"
+
+	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
+
+	files {
+		glfwLocation.."/include/GLFW/glfw3.h",
+		glfwLocation.."/include/GLFW/glfw3native.h",
+		glfwLocation.."/src/glfw_config.h",
+		glfwLocation.."/src/context.c",
+		glfwLocation.."/src/init.c",
+		glfwLocation.."/src/input.c",
+		glfwLocation.."/src/monitor.c",
+		glfwLocation.."/src/vulkan.c",
+		glfwLocation.."/src/window.c"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		staticruntime "On"
+
+		files {
+			glfwLocation.."/src/win32_init.c",
+			glfwLocation.."/src/win32_joystick.c",
+			glfwLocation.."/src/win32_monitor.c",
+			glfwLocation.."/src/win32_time.c",
+			glfwLocation.."/src/win32_thread.c",
+			glfwLocation.."/src/win32_window.c",
+			glfwLocation.."/src/wgl_context.c",
+			glfwLocation.."/src/egl_context.c",
+			glfwLocation.."/src/osmesa_context.c"
+		}
+
+		defines { 
+			"_GLFW_WIN32",
+			"_CRT_SECURE_NO_WARNINGS"
+		}
+
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
 
 
 -- EmeraldEngine main module
