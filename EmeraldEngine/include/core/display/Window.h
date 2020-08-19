@@ -1,7 +1,12 @@
 #pragma once
 
+//--- Standard library ---
+#include <memory>
+#include <string>
+
 //--- Interface files ---
 #include "core/display/WindowProperties.h"
+#include "core/display/shader/Shader.h"
 #include "core/input/InputData.h"
 #include "core/input/KeyCode.h"
 
@@ -27,5 +32,9 @@ namespace EmeraldEngine {
 		virtual void setTitle(std::string title) = 0;
 
 		virtual void close() = 0;
+
+
+		virtual std::weak_ptr<Shader> createShader(std::string sourceDirectory) = 0;
+		virtual void cleanupShaders() = 0;
 	};
 }

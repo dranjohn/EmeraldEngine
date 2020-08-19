@@ -103,6 +103,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\core\display\shader\Shader.h" />
     <ClInclude Include="include\core\utility\NonAssignable.h" />
     <ClInclude Include="include\EmeraldEngine.h" />
     <ClInclude Include="include\core\Application.h" />
@@ -117,6 +118,7 @@
     <ClInclude Include="src\core\display\InternalWindow.h" />
     <ClInclude Include="src\emeraldengine_pch.h" />
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
+    <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\display\InternalWindow.cpp" />
@@ -126,6 +128,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp" />
+    <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\glad\GLAD.vcxproj">

@@ -4,11 +4,15 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+//--- Standard library ---
+#include <forward_list>
+
 //--- Interface files ---
 #include "core/Application.h"
 
 //--- Internal files ---
 #include "core/display/InternalWindow.h"
+#include "platform/openGL/display/shader/OpenGLShader.h"
 
 
 namespace EmeraldEngine {
@@ -18,6 +22,8 @@ namespace EmeraldEngine {
 
 		GLuint quadVaoId;
 		GLuint quadVboId;
+
+		std::forward_list<std::shared_ptr<OpenGLShader>> shaders;
 
 	public:
 		OpenGLWindow(const WindowProperties& initialWindowProperties);
@@ -43,5 +49,9 @@ namespace EmeraldEngine {
 		void setTitle(std::string title) override;
 
 		void close() override;
+
+
+		std::weak_ptr<Shader> createShader(std::string sourceDirectory) override;
+		void cleanupShaders() override;
 	};
 }

@@ -82,6 +82,8 @@
       <Filter>src\platform\openGL\display</Filter>
     </ClInclude>
     <ClInclude Include="include\core\utility\NonAssignable.h" />
+    <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h" />
+    <ClInclude Include="include\core\display\shader\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
@@ -97,5 +99,6 @@
       <Filter>src\platform\openGL\display</Filter>
     </ClCompile>
     <ClCompile Include="src\core\display\InternalWindow.cpp" />
+    <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

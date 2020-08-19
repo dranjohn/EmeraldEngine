@@ -5,4 +5,9 @@
 
 //memory management and data structures
 #include <memory>
-#include <vector>
+#include <forward_list>
+
+//streams and strings
+#include <fstream>
+#include <string>
+#include <sstream>

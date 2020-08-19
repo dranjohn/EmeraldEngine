@@ -4,6 +4,7 @@
 #include "core/debug/Log.h"
 
 //--- Display interface ---
+#include "core/display/shader/Shader.h"
 #include "core/display/Window.h"
 #include "core/display/WindowProperties.h"
 

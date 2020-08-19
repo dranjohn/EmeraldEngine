@@ -11,8 +11,8 @@ public:
 	Game(EmeraldEngine::NonAssignable<EmeraldEngine::Window>& gameWindow) : gameWindow(gameWindow) {
 		gameWindow->setBackgroundColor(0.2f, 0.5f, 0.8f);
 
-		gameWindow->getEventCallbacks().resizeCallback = [](const EmeraldEngine::WindowDimensions2D&) {
-			EE_CLIENT_LOG_INFO("Window resize");
+		gameWindow->getEventCallbacks().resizeCallback = [](const EmeraldEngine::WindowDimensions2D& windowDimensions) {
+			EE_CLIENT_LOG_INFO("Window resize tp {}x{}", windowDimensions.width, windowDimensions.height);
 		};
 		gameWindow->getEventCallbacks().keyCallback = [&](EmeraldEngine::Key key, EmeraldEngine::KeyAction keyAction) {
 			if (keyAction != EmeraldEngine::KeyAction::press) {
@@ -34,6 +34,9 @@ public:
 				return;
 			}
 		};
+
+		std::weak_ptr<EmeraldEngine::Shader> shader = gameWindow->createShader("./res/shader/fade");
+		shader.lock()->use();
 	}
 
 	void update(double deltaTime) override {

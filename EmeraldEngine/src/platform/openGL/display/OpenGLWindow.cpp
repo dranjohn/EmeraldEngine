@@ -87,6 +87,8 @@ namespace EmeraldEngine {
 	}
 
 	OpenGLWindow::~OpenGLWindow() {
+		cleanupShaders();
+
 		glDisableVertexAttribArray(0);
 
 		glBindVertexArray(0);
@@ -160,6 +162,30 @@ namespace EmeraldEngine {
 
 	void OpenGLWindow::close() {
 		glfwSetWindowShouldClose(window, true);
+	}
+
+
+
+	std::string readFile(std::string directoryName, std::string fileName) {
+		std::fstream fileContentStream(directoryName + '/' + fileName);
+		std::ostringstream fileContents;
+
+		fileContents << fileContentStream.rdbuf();
+		return fileContents.str();
+	}
+
+	std::weak_ptr<Shader> OpenGLWindow::createShader(std::string sourceDirectory) {
+		std::string vertexShaderSource = readFile(sourceDirectory, "vertexShader.glsl");
+		std::string fragmentShaderSource = readFile(sourceDirectory, "fragmentShader.glsl");
+
+		std::shared_ptr<OpenGLShader> shader = std::make_shared<OpenGLShader>(vertexShaderSource, fragmentShaderSource);
+		shaders.push_front(shader);
+
+		return shader;
+	}
+
+	void OpenGLWindow::cleanupShaders() {
+		shaders.clear();
 	}
 
 
