@@ -1,7 +1,7 @@
 #pragma once
 
 //--- Debugging utils ---
-#include "core/debug/Log.h"
+#include "debug/Log.h"
 
 //--- Display interface ---
 #include "core/display/shader/Shader.h"

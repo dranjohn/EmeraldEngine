@@ -12,7 +12,7 @@
 #include "platform/openGL/display/OpenGLWindow.h"
 
 //--- Debugging utils ---
-#include "core/debug/InternalLog.h"
+#include "debug/InternalLog.h"
 
 
 int main() {

@@ -1,5 +1,5 @@
 #include "emeraldengine_pch.h"
-#include "core/debug/Log.h"
+#include "debug/Log.h"
 #include "InternalLog.h"
 
 
