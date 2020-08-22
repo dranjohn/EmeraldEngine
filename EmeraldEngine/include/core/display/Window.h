@@ -7,6 +7,8 @@
 //--- Interface files ---
 #include "core/display/WindowProperties.h"
 #include "core/display/shader/Shader.h"
+#include "core/display/texture/Texture.h"
+#include "core/display/texture/TextureOptions.h"
 #include "core/input/InputData.h"
 #include "core/input/KeyCode.h"
 
@@ -36,5 +38,8 @@ namespace EmeraldEngine {
 
 		virtual std::weak_ptr<Shader> createShader(std::string sourceDirectory) = 0;
 		virtual void cleanupShaders() = 0;
+
+		virtual std::weak_ptr<Texture> loadTexture(std::string textureFile, TextureFilter filter) = 0;
+		virtual void cleanupTextures() = 0;
 	};
 }

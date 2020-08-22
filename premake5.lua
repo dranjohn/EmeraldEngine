@@ -100,7 +100,8 @@ project (projectName)
 		"%{prj.name}/include",
 		"%{prj.name}/vendor/glad/include",
 		"%{prj.name}/vendor/glfw/include",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/vendor/stb/include"
 	}
 	
 	links {

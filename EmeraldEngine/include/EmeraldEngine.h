@@ -5,6 +5,8 @@
 
 //--- Display interface ---
 #include "core/display/shader/Shader.h"
+#include "core/display/texture/Texture.h"
+#include "core/display/texture/TextureOptions.h"
 #include "core/display/Window.h"
 #include "core/display/WindowProperties.h"
 

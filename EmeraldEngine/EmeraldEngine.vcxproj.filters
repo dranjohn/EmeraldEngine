@@ -16,6 +16,9 @@
     <Filter Include="include\core\display\shader">
       <UniqueIdentifier>{2C6B32C1-9878-60A7-215F-5C928D6B2C5E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\display\texture">
+      <UniqueIdentifier>{A6D1232F-928C-13DB-3B44-8C2527DE5D6B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\core\input">
       <UniqueIdentifier>{8032F0B6-6C16-B10C-D576-AB5FC1799B8E}</UniqueIdentifier>
     </Filter>
@@ -49,6 +52,9 @@
     <Filter Include="src\platform\openGL\display\shader">
       <UniqueIdentifier>{807BB1E0-6CB7-B44A-D5C9-CC41C1245D65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\platform\openGL\display\texture">
+      <UniqueIdentifier>{7AEC843E-E6A5-EFE8-6F05-0AC3DBBDA558}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EmeraldEngine.h">
@@ -71,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="include\core\display\shader\Shader.h">
       <Filter>include\core\display\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\display\texture\Texture.h">
+      <Filter>include\core\display\texture</Filter>
     </ClInclude>
     <ClInclude Include="include\core\input\InputData.h">
       <Filter>include\core\input</Filter>
@@ -99,6 +108,10 @@
     <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h">
       <Filter>src\platform\openGL\display\shader</Filter>
     </ClInclude>
+    <ClInclude Include="src\platform\openGL\display\texture\OpenGLTexture.h">
+      <Filter>src\platform\openGL\display\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\display\texture\TextureOptions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
@@ -118,6 +131,12 @@
     </ClCompile>
     <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp">
       <Filter>src\platform\openGL\display\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\openGL\display\texture\OpenGLTexture.cpp">
+      <Filter>src\platform\openGL\display\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb_implementation.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

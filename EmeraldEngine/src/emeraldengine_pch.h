@@ -11,3 +11,6 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+
+//stb libraries
+#include "stb_image.h"

@@ -58,7 +58,7 @@
       <PrecompiledHeaderFile>emeraldengine_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>EE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;include;vendor\glad\include;vendor\glfw\include;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;include;vendor\glad\include;vendor\glfw\include;vendor\spdlog\include;vendor\stb\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -81,7 +81,7 @@
       <PrecompiledHeaderFile>emeraldengine_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>EE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;include;vendor\glad\include;vendor\glfw\include;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;include;vendor\glad\include;vendor\glfw\include;vendor\spdlog\include;vendor\stb\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -103,6 +103,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\core\display\texture\TextureOptions.h" />
     <ClInclude Include="include\EmeraldEngine.h" />
     <ClInclude Include="include\core\Application.h" />
     <ClInclude Include="include\core\EntryPoint.h" />
@@ -110,6 +111,7 @@
     <ClInclude Include="include\core\display\Window.h" />
     <ClInclude Include="include\core\display\WindowProperties.h" />
     <ClInclude Include="include\core\display\shader\Shader.h" />
+    <ClInclude Include="include\core\display\texture\Texture.h" />
     <ClInclude Include="include\core\input\InputData.h" />
     <ClInclude Include="include\core\input\KeyCode.h" />
     <ClInclude Include="include\core\utility\NonAssignable.h" />
@@ -119,6 +121,7 @@
     <ClInclude Include="src\emeraldengine_pch.h" />
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
     <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h" />
+    <ClInclude Include="src\platform\openGL\display\texture\OpenGLTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp" />
@@ -129,6 +132,8 @@
     </ClCompile>
     <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp" />
     <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp" />
+    <ClCompile Include="src\platform\openGL\display\texture\OpenGLTexture.cpp" />
+    <ClCompile Include="src\stb_implementation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\glad\GLAD.vcxproj">

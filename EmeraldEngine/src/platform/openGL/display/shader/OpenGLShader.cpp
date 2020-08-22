@@ -61,4 +61,9 @@ namespace EmeraldEngine {
 	void OpenGLShader::loadMatrixv4x4(std::string location, float value[16]) {
 		glUniformMatrix4fv(glGetUniformLocation(programId, location.c_str()), 1, false, value);
 	}
+
+
+	void OpenGLShader::loadTexture(std::string location, unsigned int textureSlot) {
+		glUniform1i(glGetUniformLocation(programId, location.c_str()), (GLint)textureSlot);
+	}
 }

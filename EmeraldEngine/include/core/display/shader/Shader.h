@@ -20,5 +20,7 @@ namespace EmeraldEngine {
 		virtual void loadFloatv4(std::string location, float x, float y, float z, float w) = 0;
 
 		virtual void loadMatrixv4x4(std::string location, float value[16]) = 0;
+
+		virtual void loadTexture(std::string location, unsigned int textureSlot) = 0;
 	};
 }

@@ -35,8 +35,13 @@ public:
 			}
 		};
 
-		std::weak_ptr<EmeraldEngine::Shader> shader = gameWindow->createShader("./res/shader/fade");
+		std::weak_ptr<EmeraldEngine::Shader> shader = gameWindow->createShader("./res/shader/texture");
 		shader.lock()->use();
+
+		std::weak_ptr<EmeraldEngine::Texture> texture = gameWindow->loadTexture("./res/texture/color_test_image.png", EmeraldEngine::TextureFilter::nearest);
+		texture.lock()->use(0);
+
+		shader.lock()->loadTexture("plainTexture", 0);
 	}
 
 	void update(double deltaTime) override {

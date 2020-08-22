@@ -29,5 +29,7 @@ namespace EmeraldEngine {
 		void loadFloatv4(std::string location, float x, float y, float z, float w) override;
 
 		void loadMatrixv4x4(std::string location, float value[16]) override;
+
+		void loadTexture(std::string location, unsigned int textureSlot) override;
 	};
 }

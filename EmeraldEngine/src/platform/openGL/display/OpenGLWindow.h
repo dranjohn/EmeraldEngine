@@ -13,6 +13,7 @@
 //--- Internal files ---
 #include "core/display/InternalWindow.h"
 #include "platform/openGL/display/shader/OpenGLShader.h"
+#include "platform/openGL/display/texture/OpenGLTexture.h"
 
 
 namespace EmeraldEngine {
@@ -24,6 +25,7 @@ namespace EmeraldEngine {
 		GLuint quadVboId;
 
 		std::forward_list<std::shared_ptr<OpenGLShader>> shaders;
+		std::forward_list<std::shared_ptr<OpenGLTexture>> textures;
 
 	public:
 		OpenGLWindow(const WindowProperties& initialWindowProperties);
@@ -53,5 +55,8 @@ namespace EmeraldEngine {
 
 		std::weak_ptr<Shader> createShader(std::string sourceDirectory) override;
 		void cleanupShaders() override;
+
+		std::weak_ptr<Texture> loadTexture(std::string textureFile, TextureFilter filter) override;
+		void cleanupTextures() override;
 	};
 }
