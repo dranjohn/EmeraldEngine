@@ -39,7 +39,10 @@ public:
 			}
 		};
 
-		std::weak_ptr<EmeraldEngine::Shader> shader = gameResourceManager->createShader("./res/shader/texture");
+		std::weak_ptr<EmeraldEngine::Shader> shader = gameResourceManager->createShader({
+			{ EmeraldEngine::ShaderType::vertex_shader, "./res/shader/texture/vertexShader.glsl" },
+			{ EmeraldEngine::ShaderType::fragment_shader, "./res/shader/texture/fragmentShader.glsl" }
+		}, true);
 		shader.lock()->use();
 
 		std::weak_ptr<EmeraldEngine::Texture> texture = gameResourceManager->loadTexture("./res/texture/color_test_image.png", EmeraldEngine::TextureFilter::nearest);

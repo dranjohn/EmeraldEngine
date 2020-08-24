@@ -1,8 +1,34 @@
 #include "emeraldengine_pch.h"
 #include "OpenGLShader.h"
 
+//--- Standard library ---
+#include <cstdint>
+
+//--- Debug utils ---
+#include "debug/InternalLog.h"
+
 
 namespace EmeraldEngine {
+	GLenum getShaderTypeEnumValue(ShaderType type) {
+		switch (type) {
+		case ShaderType::vertex_shader:
+			return GL_VERTEX_SHADER;
+		case ShaderType::tesselation_control:
+			return GL_TESS_CONTROL_SHADER;
+		case ShaderType::tesselation_evaluation:
+			return GL_TESS_EVALUATION_SHADER;
+		case ShaderType::geometry_shader:
+			return GL_GEOMETRY_SHADER;
+		case ShaderType::fragment_shader:
+			return GL_FRAGMENT_SHADER;
+
+		default:
+			//TODO: throw exception
+			return 0;
+		}
+	}
+
+
 	GLuint createShader(std::string source, GLenum type) {
 		GLuint shaderId = glCreateShader(type);
 
@@ -14,17 +40,28 @@ namespace EmeraldEngine {
 		return shaderId;
 	}
 
-	OpenGLShader::OpenGLShader(std::string vertexShaderSource, std::string fragmentShaderSource) {
-		GLuint vertexShader = createShader(vertexShaderSource, GL_VERTEX_SHADER);
-		GLuint fragmentShader = createShader(fragmentShaderSource, GL_FRAGMENT_SHADER);
+	OpenGLShader::OpenGLShader(const ShaderSource& source) {
+		if (source.find(ShaderType::vertex_shader) == source.end() || source.find(ShaderType::fragment_shader) == source.end()) {
+			EE_CORE_LOG_ERROR("OpenGL shaders require at least a vertex and fragment shader");
+			//TODO: throw exception
+		}
 
-		glAttachShader(programId, vertexShader);
-		glAttachShader(programId, fragmentShader);
+		GLuint* shaders = new GLuint[source.size()];
+		size_t pointer = 0;
+
+		for (auto shaderSource : source) {
+			shaders[pointer] = createShader(shaderSource.second, getShaderTypeEnumValue(shaderSource.first));
+			glAttachShader(programId, shaders[pointer]);
+
+			++pointer;
+		}
 
 		glLinkProgram(programId);
 
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
+		for (size_t i = 0; i < pointer; ++i) {
+			glDeleteShader(shaders[i]);
+		}
+		delete[] shaders;
 	}
 
 	OpenGLShader::~OpenGLShader() {

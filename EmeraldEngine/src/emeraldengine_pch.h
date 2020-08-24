@@ -6,6 +6,7 @@
 //memory management and data structures
 #include <memory>
 #include <forward_list>
+#include <unordered_map>
 
 //streams and strings
 #include <fstream>

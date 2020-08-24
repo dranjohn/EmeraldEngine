@@ -9,8 +9,8 @@
 
 
 namespace EmeraldEngine {
-	std::string readFile(std::string directoryName, std::string fileName) {
-		std::fstream fileContentStream(directoryName + '/' + fileName);
+	std::string readFile(std::string fileName) {
+		std::fstream fileContentStream(fileName);
 		std::ostringstream fileContents;
 
 		fileContents << fileContentStream.rdbuf();
@@ -20,13 +20,23 @@ namespace EmeraldEngine {
 	}
 
 
-	std::weak_ptr<Shader> OpenGLResourceManager::createShader(std::string sourceDirectory) {
-		std::string vertexShaderSource = readFile(sourceDirectory, "vertexShader.glsl");
-		std::string fragmentShaderSource = readFile(sourceDirectory, "fragmentShader.glsl");
+	std::weak_ptr<Shader> OpenGLResourceManager::createShader(const ShaderSource& source, bool fromFile) {
+		std::shared_ptr<OpenGLShader> shader = nullptr;
 
-		std::shared_ptr<OpenGLShader> shader = std::make_shared<OpenGLShader>(vertexShaderSource, fragmentShaderSource);
+		if (fromFile) {
+			ShaderSource fileSource;
+
+			for (auto shaderSourceFile : source) {
+				fileSource.emplace(shaderSourceFile.first, readFile(shaderSourceFile.second));
+			}
+
+			shader = std::make_shared<OpenGLShader>(fileSource);
+		}
+		else {
+			shader = std::make_shared<OpenGLShader>(source);
+		}
+
 		shaders.push_front(shader);
-
 		return shader;
 	}
 

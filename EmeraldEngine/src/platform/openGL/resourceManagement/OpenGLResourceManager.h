@@ -18,7 +18,7 @@ namespace EmeraldEngine {
 		std::forward_list<std::shared_ptr<OpenGLTexture>> textures;
 
 	public:
-		std::weak_ptr<Shader> createShader(std::string sourceDirectory) override;
+		std::weak_ptr<Shader> createShader(const ShaderSource& source, bool fromFile) override;
 		void cleanupShaders() override;
 
 		std::weak_ptr<Texture> loadTexture(std::string textureFile, TextureFilter filter) override;

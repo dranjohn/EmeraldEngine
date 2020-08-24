@@ -122,6 +122,7 @@
     </ClInclude>
     <ClInclude Include="include\core\resourceManagement\ResourceManager.h" />
     <ClInclude Include="src\platform\openGL\resourceManagement\OpenGLResourceManager.h" />
+    <ClInclude Include="include\core\resourceManagement\shader\ShaderSource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">

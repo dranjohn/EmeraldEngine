@@ -104,6 +104,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\core\resourceManagement\ResourceManager.h" />
+    <ClInclude Include="include\core\resourceManagement\shader\ShaderSource.h" />
     <ClInclude Include="include\EmeraldEngine.h" />
     <ClInclude Include="include\core\Application.h" />
     <ClInclude Include="include\core\EntryPoint.h" />

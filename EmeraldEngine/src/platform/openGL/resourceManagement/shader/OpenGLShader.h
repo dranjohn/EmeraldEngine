@@ -8,6 +8,7 @@
 
 //--- Interface files ---
 #include "core/resourceManagement/shader/Shader.h"
+#include "core/resourceManagement/shader/ShaderSource.h"
 
 
 namespace EmeraldEngine {
@@ -16,7 +17,7 @@ namespace EmeraldEngine {
 		GLuint programId = glCreateProgram();
 
 	public:
-		OpenGLShader(std::string vertexShaderSource, std::string fragmentShaderSource);
+		OpenGLShader(const ShaderSource& source);
 		~OpenGLShader();
 
 		void use() override;
