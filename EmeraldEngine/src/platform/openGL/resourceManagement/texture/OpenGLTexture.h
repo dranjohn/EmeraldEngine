@@ -7,8 +7,8 @@
 #include <glad/glad.h>
 
 //--- Interface files ---
-#include "core/display/texture/Texture.h"
-#include "core/display/texture/TextureOptions.h"
+#include "core/resourceManagement/texture/Texture.h"
+#include "core/resourceManagement/texture/TextureOptions.h"
 
 
 namespace EmeraldEngine {

@@ -7,6 +7,7 @@
 
 //--- Interface files ---
 #include "core/display/Window.h"
+#include "core/resourceManagement/ResourceManager.h"
 #include "core/utility/NonAssignable.h"
 
 
@@ -16,5 +17,5 @@ namespace EmeraldEngine {
 		virtual void update(double deltaTime) = 0;
 	};
 
-	Application* createApplication(NonAssignable<Window> gameWindow);
+	Application* createApplication(NonAssignable<Window> gameWindow, NonAssignable<ResourceManager> resourceManager);
 }

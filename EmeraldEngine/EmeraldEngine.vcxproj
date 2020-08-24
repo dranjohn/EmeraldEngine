@@ -103,16 +103,17 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\core\resourceManagement\ResourceManager.h" />
     <ClInclude Include="include\EmeraldEngine.h" />
     <ClInclude Include="include\core\Application.h" />
     <ClInclude Include="include\core\EntryPoint.h" />
     <ClInclude Include="include\core\display\Window.h" />
     <ClInclude Include="include\core\display\WindowProperties.h" />
-    <ClInclude Include="include\core\display\shader\Shader.h" />
-    <ClInclude Include="include\core\display\texture\Texture.h" />
-    <ClInclude Include="include\core\display\texture\TextureOptions.h" />
     <ClInclude Include="include\core\input\InputData.h" />
     <ClInclude Include="include\core\input\KeyCode.h" />
+    <ClInclude Include="include\core\resourceManagement\shader\Shader.h" />
+    <ClInclude Include="include\core\resourceManagement\texture\Texture.h" />
+    <ClInclude Include="include\core\resourceManagement\texture\TextureOptions.h" />
     <ClInclude Include="include\core\utility\NonAssignable.h" />
     <ClInclude Include="include\debug\Log.h" />
     <ClInclude Include="include\platform\Platform.h" />
@@ -120,8 +121,9 @@
     <ClInclude Include="src\debug\InternalLog.h" />
     <ClInclude Include="src\emeraldengine_pch.h" />
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h" />
-    <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h" />
-    <ClInclude Include="src\platform\openGL\display\texture\OpenGLTexture.h" />
+    <ClInclude Include="src\platform\openGL\resourceManagement\OpenGLResourceManager.h" />
+    <ClInclude Include="src\platform\openGL\resourceManagement\shader\OpenGLShader.h" />
+    <ClInclude Include="src\platform\openGL\resourceManagement\texture\OpenGLTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp" />
@@ -131,8 +133,9 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp" />
-    <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp" />
-    <ClCompile Include="src\platform\openGL\display\texture\OpenGLTexture.cpp" />
+    <ClCompile Include="src\platform\openGL\resourceManagement\OpenGLResourceManager.cpp" />
+    <ClCompile Include="src\platform\openGL\resourceManagement\shader\OpenGLShader.cpp" />
+    <ClCompile Include="src\platform\openGL\resourceManagement\texture\OpenGLTexture.cpp" />
     <ClCompile Include="src\stb_implementation.cpp" />
   </ItemGroup>
   <ItemGroup>

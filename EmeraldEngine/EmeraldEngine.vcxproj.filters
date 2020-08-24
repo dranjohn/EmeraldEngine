@@ -10,14 +10,17 @@
     <Filter Include="include\core\display">
       <UniqueIdentifier>{264E6DA7-12DD-F670-BBFB-0A6CA7690717}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\core\display\shader">
-      <UniqueIdentifier>{2C6B32C1-9878-60A7-215F-5C928D6B2C5E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\core\display\texture">
-      <UniqueIdentifier>{A6D1232F-928C-13DB-3B44-8C2527DE5D6B}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\core\input">
       <UniqueIdentifier>{8032F0B6-6C16-B10C-D576-AB5FC1799B8E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core\resourceManagement">
+      <UniqueIdentifier>{55F2B54E-C1D5-C48E-CAD8-F2CA363B8BDF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core\resourceManagement\shader">
+      <UniqueIdentifier>{7BA4F0F3-67F6-C7E3-5015-05F43C06E1CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core\resourceManagement\texture">
+      <UniqueIdentifier>{D534A9B9-41C4-6AA4-4AC0-4BBCB6CEA5B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\core\utility">
       <UniqueIdentifier>{04E5FCDC-F073-86A6-9992-9AA18500974C}</UniqueIdentifier>
@@ -49,11 +52,14 @@
     <Filter Include="src\platform\openGL\display">
       <UniqueIdentifier>{FAD49A3F-66E2-C825-EFC8-C4105BD594DC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\platform\openGL\display\shader">
-      <UniqueIdentifier>{807BB1E0-6CB7-B44A-D5C9-CC41C1245D65}</UniqueIdentifier>
+    <Filter Include="src\platform\openGL\resourceManagement">
+      <UniqueIdentifier>{A90C2D3D-955E-042D-7E7D-413D6A6E1D16}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\platform\openGL\display\texture">
-      <UniqueIdentifier>{7AEC843E-E6A5-EFE8-6F05-0AC3DBBDA558}</UniqueIdentifier>
+    <Filter Include="src\platform\openGL\resourceManagement\shader">
+      <UniqueIdentifier>{4F58C04B-BBC8-C2C4-84E7-3C4DF016FBC5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform\openGL\resourceManagement\texture">
+      <UniqueIdentifier>{29636F0B-15E1-BFA4-FED8-7D3CEAF501CD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,20 +78,20 @@
     <ClInclude Include="include\core\display\WindowProperties.h">
       <Filter>include\core\display</Filter>
     </ClInclude>
-    <ClInclude Include="include\core\display\shader\Shader.h">
-      <Filter>include\core\display\shader</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\display\texture\Texture.h">
-      <Filter>include\core\display\texture</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\display\texture\TextureOptions.h">
-      <Filter>include\core\display\texture</Filter>
-    </ClInclude>
     <ClInclude Include="include\core\input\InputData.h">
       <Filter>include\core\input</Filter>
     </ClInclude>
     <ClInclude Include="include\core\input\KeyCode.h">
       <Filter>include\core\input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\resourceManagement\shader\Shader.h">
+      <Filter>include\core\resourceManagement\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\resourceManagement\texture\Texture.h">
+      <Filter>include\core\resourceManagement\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\resourceManagement\texture\TextureOptions.h">
+      <Filter>include\core\resourceManagement\texture</Filter>
     </ClInclude>
     <ClInclude Include="include\core\utility\NonAssignable.h">
       <Filter>include\core\utility</Filter>
@@ -108,12 +114,14 @@
     <ClInclude Include="src\platform\openGL\display\OpenGLWindow.h">
       <Filter>src\platform\openGL\display</Filter>
     </ClInclude>
-    <ClInclude Include="src\platform\openGL\display\shader\OpenGLShader.h">
-      <Filter>src\platform\openGL\display\shader</Filter>
+    <ClInclude Include="src\platform\openGL\resourceManagement\shader\OpenGLShader.h">
+      <Filter>src\platform\openGL\resourceManagement\shader</Filter>
     </ClInclude>
-    <ClInclude Include="src\platform\openGL\display\texture\OpenGLTexture.h">
-      <Filter>src\platform\openGL\display\texture</Filter>
+    <ClInclude Include="src\platform\openGL\resourceManagement\texture\OpenGLTexture.h">
+      <Filter>src\platform\openGL\resourceManagement\texture</Filter>
     </ClInclude>
+    <ClInclude Include="include\core\resourceManagement\ResourceManager.h" />
+    <ClInclude Include="src\platform\openGL\resourceManagement\OpenGLResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\EntryPoint.cpp">
@@ -131,14 +139,15 @@
     <ClCompile Include="src\platform\openGL\display\OpenGLWindow.cpp">
       <Filter>src\platform\openGL\display</Filter>
     </ClCompile>
-    <ClCompile Include="src\platform\openGL\display\shader\OpenGLShader.cpp">
-      <Filter>src\platform\openGL\display\shader</Filter>
+    <ClCompile Include="src\platform\openGL\resourceManagement\shader\OpenGLShader.cpp">
+      <Filter>src\platform\openGL\resourceManagement\shader</Filter>
     </ClCompile>
-    <ClCompile Include="src\platform\openGL\display\texture\OpenGLTexture.cpp">
-      <Filter>src\platform\openGL\display\texture</Filter>
+    <ClCompile Include="src\platform\openGL\resourceManagement\texture\OpenGLTexture.cpp">
+      <Filter>src\platform\openGL\resourceManagement\texture</Filter>
     </ClCompile>
     <ClCompile Include="src\stb_implementation.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\platform\openGL\resourceManagement\OpenGLResourceManager.cpp" />
   </ItemGroup>
 </Project>

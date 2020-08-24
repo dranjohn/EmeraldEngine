@@ -7,7 +7,7 @@
 #include <glad/glad.h>
 
 //--- Interface files ---
-#include "core/display/shader/Shader.h"
+#include "core/resourceManagement/shader/Shader.h"
 
 
 namespace EmeraldEngine {
