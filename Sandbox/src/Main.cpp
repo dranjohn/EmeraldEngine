@@ -8,6 +8,9 @@ private:
 
 	bool showQuad = true;
 
+	std::weak_ptr<EmeraldEngine::Shader> shader;
+	std::weak_ptr<EmeraldEngine::Texture> texture;
+
 public:
 	Game(EmeraldEngine::NonAssignable<EmeraldEngine::Window>& gameWindow, EmeraldEngine::NonAssignable<EmeraldEngine::ResourceManager>& resourceManager) :
 		gameWindow(gameWindow),
@@ -33,28 +36,40 @@ public:
 				return;
 			}
 
+			if (key == EmeraldEngine::Key::Y) { //Z on german keyboard
+				gameWindow->clearFilter();
+				return;
+			}
+
 			if (key == EmeraldEngine::Key::escape) {
 				gameWindow->close();
 				return;
 			}
 		};
 
-		std::weak_ptr<EmeraldEngine::Shader> shader = gameResourceManager->createShader({
+		shader = gameResourceManager->createShader({
 			{ EmeraldEngine::ShaderType::vertex_shader, "./res/shader/texture/vertexShader.glsl" },
 			{ EmeraldEngine::ShaderType::fragment_shader, "./res/shader/texture/fragmentShader.glsl" }
 		}, true);
 		shader.lock()->use();
-
-		std::weak_ptr<EmeraldEngine::Texture> texture = gameResourceManager->loadTexture("./res/texture/color_test_image.png", EmeraldEngine::TextureFilter::nearest);
-		texture.lock()->use(0);
-
 		shader.lock()->loadTexture("plainTexture", 0);
+
+		texture = gameResourceManager->loadTexture("./res/texture/color_test_image.png", EmeraldEngine::TextureFilter::nearest);
+
+		std::weak_ptr<EmeraldEngine::Shader> postProcessingShader = gameResourceManager->createShader({
+			{EmeraldEngine::ShaderType::vertex_shader, "./res/postprocessor_shader/invert/vertexShader.glsl"},
+			{EmeraldEngine::ShaderType::fragment_shader, "./res/postprocessor_shader/invert/fragmentShader.glsl"},
+		}, true);
+		gameWindow->useFilter(postProcessingShader);
 	}
 
 	void update(double deltaTime) override {
 		//EE_CLIENT_LOG_TRACE("Executing game iteration with {:.3f} seconds", deltaTime);
 
 		if (showQuad) {
+			shader.lock()->use();
+			texture.lock()->use(0);
+
 			gameWindow->renderQuad();
 		}
 	}

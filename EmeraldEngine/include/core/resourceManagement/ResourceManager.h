@@ -12,7 +12,7 @@
 
 
 namespace EmeraldEngine {
-	class ResourceManager {
+	class ResourceManager { //TODO: go off weak pointers
 	public:
 		virtual std::weak_ptr<Shader> createShader(const ShaderSource& source, bool fromFile) = 0;
 		virtual void cleanupShaders() = 0;

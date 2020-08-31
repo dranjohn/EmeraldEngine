@@ -16,17 +16,40 @@
 namespace EmeraldEngine {
 	class OpenGLWindow : public InternalWindow {
 	private:
+		// -----------------
+		// Window properties
+		// -----------------
 		GLFWwindow* window;
 
 		GLuint quadVaoId;
 		GLuint quadVboId;
+
+		// --------------
+		// Post-processor
+		// --------------
+		bool postProcessorUsed = false;
+
+		GLuint screenVaoId;
+		GLuint screenVboId;
+		
+		GLuint multisampledFrameBuffer = 0;
+		GLuint multisampledRenderBuffer = 0;
+
+		GLuint frameBuffer = 0;
+		GLuint frameBufferTexture = 0;
+
+		std::weak_ptr<Shader> postProcessingShader;
 
 	public:
 		OpenGLWindow(const WindowProperties& initialWindowProperties);
 		~OpenGLWindow();
 
 		void renderQuad() const override;
-		void setBackgroundColor(float red, float green, float blue) const override;
+		void renderQuads(unsigned int amount) const override;
+
+		void setBackgroundColor(float red, float green, float blue) override;
+		void useFilter(std::weak_ptr<Shader> filter) override;
+		void clearFilter() override;
 
 		void resetTime() override;
 		double getTime() const override;

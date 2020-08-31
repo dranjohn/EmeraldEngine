@@ -8,6 +8,7 @@
 #include "core/resourceManagement/shader/ShaderSource.h"
 #include "core/resourceManagement/texture/Texture.h"
 #include "core/resourceManagement/texture/TextureOptions.h"
+#include "core/resourceManagement/ResourceManager.h"
 #include "core/display/Window.h"
 #include "core/display/WindowProperties.h"
 
