@@ -87,7 +87,3 @@ EmeraldEngine::WindowProperties EmeraldEngine::getInitialWindowProperties() {
 		true //resizable
 	};
 }
-
-EmeraldEngine::Platform EmeraldEngine::getPlatform() {
-	return EmeraldEngine::Platform::defaultPlatform;
-}

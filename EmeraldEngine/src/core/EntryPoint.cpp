@@ -4,13 +4,11 @@
 //--- Interface files ---
 #include "core/Application.h"
 #include "core/display/Window.h"
-#include "platform/Platform.h"
 #include "core/utility/NonAssignable.h"
 
 //--- Internal files ---
 #include "core/display/InternalWindow.h"
-#include "platform/openGL/display/OpenGLWindow.h"
-#include "platform/openGL/resourceManagement/OpenGLResourceManager.h"
+#include "core/resourceManagement/InternalResourceManager.h"
 
 //--- Debugging utils ---
 #include "debug/InternalLog.h"
@@ -19,27 +17,10 @@
 int main() {
 	EE_CORE_LOG_INFO("Starting EmeraldEngine");
 
-	//request the platform the user wants to use
-	EmeraldEngine::Platform platform = EmeraldEngine::getPlatform();
-
 	//create openGL window
 	EmeraldEngine::WindowProperties windowProperties = EmeraldEngine::getInitialWindowProperties();
-	EmeraldEngine::InternalWindow* window;
-	EmeraldEngine::ResourceManager* resourceManager;
-
-	switch (platform) {
-		case EmeraldEngine::Platform::defaultPlatform: //currently, the default platform is openGL
-		case EmeraldEngine::Platform::opengl:
-			window = new EmeraldEngine::OpenGLWindow(windowProperties);
-			resourceManager = new EmeraldEngine::OpenGLResourceManager();
-			break;
-		default:
-			EE_CORE_LOG_WARN("Got unknown platform, treating it as missing platform");
-		case EmeraldEngine::Platform::missingPlatform:
-			EE_CORE_LOG_CRITICAL("Missing platform, shutting down EmeraldEngine");
-			return 0;
-	}
-
+	EmeraldEngine::InternalWindow* window = new EmeraldEngine::InternalWindow(windowProperties);
+	EmeraldEngine::ResourceManager* resourceManager = new EmeraldEngine::InternalResourceManager();
 
 	//get application
 	EmeraldEngine::Application* application = EmeraldEngine::createApplication(
@@ -74,6 +55,8 @@ int main() {
 }
 
 //--- User-defined application to run on the emerald engine ---
-extern EmeraldEngine::Application* EmeraldEngine::createApplication(EmeraldEngine::NonAssignable<EmeraldEngine::Window> gameWindow, EmeraldEngine::NonAssignable<EmeraldEngine::ResourceManager> resourceManager);
+extern EmeraldEngine::Application* EmeraldEngine::createApplication(
+	EmeraldEngine::NonAssignable<EmeraldEngine::Window> gameWindow,
+	EmeraldEngine::NonAssignable<EmeraldEngine::ResourceManager> resourceManager
+);
 extern EmeraldEngine::WindowProperties EmeraldEngine::getInitialWindowProperties();
-extern EmeraldEngine::Platform EmeraldEngine::getPlatform();

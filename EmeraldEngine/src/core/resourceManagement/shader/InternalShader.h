@@ -12,13 +12,13 @@
 
 
 namespace EmeraldEngine {
-	class OpenGLShader : public Shader {
+	class InternalShader : public Shader {
 	private:
 		GLuint programId = glCreateProgram();
 
 	public:
-		OpenGLShader(const ShaderSource& source);
-		~OpenGLShader();
+		InternalShader(const ShaderSource& source);
+		~InternalShader();
 
 		void use() override;
 

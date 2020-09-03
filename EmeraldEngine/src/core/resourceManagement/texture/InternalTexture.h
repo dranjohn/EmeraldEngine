@@ -12,13 +12,13 @@
 
 
 namespace EmeraldEngine {
-	class OpenGLTexture : public Texture {
+	class InternalTexture : public Texture {
 	private:
 		GLuint textureId;
 
 	public:
-		OpenGLTexture(GLsizei width, GLsizei height, const GLvoid* data, TextureFilter filter);
-		~OpenGLTexture();
+		InternalTexture(GLsizei width, GLsizei height, const GLvoid* data, TextureFilter filter);
+		~InternalTexture();
 
 		void use(unsigned int slot) override;
 	};

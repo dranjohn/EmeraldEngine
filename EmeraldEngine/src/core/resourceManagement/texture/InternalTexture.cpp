@@ -1,12 +1,12 @@
 #include "emeraldengine_pch.h"
-#include "OpenGLTexture.h"
+#include "InternalTexture.h"
 
 //--- Debugging utils ---
 #include "debug/InternalLog.h"
 
 
 namespace EmeraldEngine {
-	OpenGLTexture::OpenGLTexture(GLsizei width, GLsizei height, const GLvoid* data, TextureFilter filter) {
+	InternalTexture::InternalTexture(GLsizei width, GLsizei height, const GLvoid* data, TextureFilter filter) {
 		glGenTextures(1, &textureId);
 		glBindTexture(GL_TEXTURE_2D, textureId);
 
@@ -36,12 +36,12 @@ namespace EmeraldEngine {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	OpenGLTexture::~OpenGLTexture() {
+	InternalTexture::~InternalTexture() {
 		glDeleteTextures(1, &textureId);
 	}
 
 
-	void OpenGLTexture::use(unsigned int slot) {
+	void InternalTexture::use(unsigned int slot) {
 		glActiveTexture(GL_TEXTURE0 + slot);
 		glBindTexture(GL_TEXTURE_2D, textureId);
 	}
