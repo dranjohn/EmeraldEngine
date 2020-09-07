@@ -4,6 +4,12 @@
     <Filter Include="include">
       <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\component">
+      <UniqueIdentifier>{4B67BA26-B77D-B8BC-00F5-43DE6C4A8944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\component\camera">
+      <UniqueIdentifier>{838D62D5-6FB2-B155-98FD-96E58481B073}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\core">
       <UniqueIdentifier>{A17DD969-8DE0-680E-3666-A1C422A83491}</UniqueIdentifier>
     </Filter>
@@ -53,6 +59,9 @@
   <ItemGroup>
     <ClInclude Include="include\EmeraldEngine.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\camera\Camera.h">
+      <Filter>include\component\camera</Filter>
     </ClInclude>
     <ClInclude Include="include\core\Application.h">
       <Filter>include\core</Filter>
